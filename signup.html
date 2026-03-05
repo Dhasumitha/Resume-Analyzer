@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ResumeAnalyzer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="auth-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="brand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="4" width="16" height="16" rx="2" fill="#007BFF" />
+                    <path d="M8 10h8M8 14h5" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="brand-name">ResumeAnalyzer</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Features</a>
+                <a href="#" class="nav-link">About</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="window.location.href='index.html'">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1 class="auth-title">Create your account</h1>
+                <p class="auth-subtitle">Optimize your CV and land your dream job</p>
+
+                <form class="auth-form" id="signupForm">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" id="fullName" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" placeholder="e.g. alex@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" class="form-input" placeholder="Min. 8 characters"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" id="confirmPassword" class="form-input"
+                            placeholder="Re-type your password" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large btn-full">Register</button>
+
+                    <p class="auth-footer-text">
+                        Already have an account? <a href="index.html" class="auth-link">Login</a>
+                    </p>
+                </form>
+            </div>
+
+            <p class="auth-copyright">© 2024 ResumeAnalyzer. All rights reserved.</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

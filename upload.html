@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Resume - ResumeAnalyzer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="upload.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="brand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="4" width="16" height="16" rx="2" fill="#007BFF" />
+                    <path d="M8 10h8M8 14h5" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="brand-name">ResumeAI</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link">My Resumes</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-primary" id="logoutBtn">Logout</button>
+                <div class="user-avatar" id="userAvatarBtn">
+                    <img src="avatar.png" alt="User" id="userAvatarImg"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%2220%22 fill=%22%23FFE4C4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23FF8C42%22 font-size=%2216%22 font-family=%22Arial%22%3EA%3C/text%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="upload-page-section">
+                <h1 class="page-title">Optimize Your Resume</h1>
+                <p class="page-subtitle">Our AI analyzes your CV against industry standards to give you the winning
+                    edge.</p>
+
+                <div class="upload-card">
+                    <div class="upload-step">
+                        <h2 class="step-title">Step 1: Upload your CV</h2>
+                        <div class="dropzone" id="dropzone">
+                            <div class="upload-icon">
+                                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                    <circle cx="32" cy="32" r="32" fill="#E3F2FD" />
+                                    <path d="M32 20v24M24 28l8-8 8 8" stroke="#007BFF" stroke-width="3"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M20 44h24" stroke="#007BFF" stroke-width="3" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <h3 class="dropzone-title">Drag and drop your file</h3>
+                            <p class="dropzone-text">PDF or TXT files only (Max. 5MB)</p>
+                            <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                            <input type="file" id="fileInput" accept=".pdf,.txt" hidden>
+                        </div>
+                    </div>
+
+                    <div class="upload-step">
+                        <h2 class="step-title">Step 2: Target Job Role</h2>
+                        <div class="job-role-selector">
+                            <select class="form-select" id="jobRole">
+                                <option value="">Select a role (e.g. Software Engineer, Product Manager)</option>
+                                <option value="software-engineer">Software Engineer</option>
+                                <option value="product-manager">Product Manager</option>
+                                <option value="data-scientist">Data Scientist</option>
+                                <option value="ui-ux-designer">UI/UX Designer</option>
+                                <option value="devops-engineer">DevOps Engineer</option>
+                                <option value="business-analyst">Business Analyst</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-large btn-full analyze-btn" id="analyzeBtn" disabled>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M4 4h12v2H4V4zm0 4h12v2H4V8zm0 4h8v2H4v-2z" />
+                        </svg>
+                        Analyze Resume
+                    </button>
+
+                    <div class="privacy-notice">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm1 12H7v-2h2v2zm0-3H7V4h2v5z" />
+                        </svg>
+                        <span>Your privacy matters. Resumes are processed securely and deleted after analysis.</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 ResumeAI Inc.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

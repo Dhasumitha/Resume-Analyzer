@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resumes - ResumeAnalyzer</title>
+    <meta name="description" content="Manage all your resumes and track their analysis scores.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="resumes.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="brand-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="4" width="16" height="16" rx="2" fill="#007BFF" />
+                    <path d="M8 10h8M8 14h5" stroke="white" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="brand-name">ResumeAnalyzer</span>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="my-resumes.html" class="nav-link active">My Resumes</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-primary" id="logoutBtn">Logout</button>
+                <div class="user-avatar" id="userAvatarBtn">
+                    <img src="avatar.png" alt="User" id="userAvatarImg"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%2220%22 fill=%22%23E3F2FD%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23007BFF%22 font-size=%2216%22 font-family=%22Arial%22%3EU%3C/text%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <section class="welcome-section">
+                <h1 class="welcome-title">My Resumes</h1>
+                <p class="welcome-subtitle">Manage and track all your resume analyses in one place.</p>
+            </section>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon stat-icon-primary">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                                <path fill-rule="evenodd"
+                                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="totalResumes">0</div>
+                    <div class="stat-label">Total Resumes</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon stat-icon-success">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="analyzedResumes">0</div>
+                    <div class="stat-label">Analyzed</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon stat-icon-warning">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="avgScore">0</div>
+                    <div class="stat-label">Avg. Score</div>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="resumeSearch" class="search-input"
+                    placeholder="Search resumes by name or job role...">
+            </div>
+
+            <!-- Resumes Grid -->
+            <div class="resumes-grid" id="resumesContainer">
+                <!-- Resume cards will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">
+                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                        <circle cx="60" cy="60" r="60" fill="#E3F2FD" />
+                        <rect x="35" y="30" width="50" height="60" rx="4" fill="white" stroke="#007BFF"
+                            stroke-width="3" />
+                        <line x1="45" y1="45" x2="75" y2="45" stroke="#007BFF" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="45" y1="55" x2="65" y2="55" stroke="#007BFF" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="45" y1="65" x2="70" y2="65" stroke="#007BFF" stroke-width="3"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <h2 class="empty-title">No Resumes Yet</h2>
+                <p class="empty-description">
+                    You haven't uploaded any resumes yet. Start by uploading your first resume to get a detailed
+                    AI-powered analysis.
+                </p>
+                <button class="btn btn-primary btn-large" onclick="window.location.href='upload.html'">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 4v12M4 10h12" stroke="white" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    Upload Your First Resume
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 ResumeAnalyzer. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
